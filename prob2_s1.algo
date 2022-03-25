@@ -26,13 +26,11 @@ BEGIN
                     BREAK;
                 }
         END_FOR
-        if(exists==FALSE) THEN
+        if(exists==TRUE) THEN
         {
             sum=sum+tab[i];
-        }
-        ELSE
             exists=FALSE;
-        END_IF
+        }
     END_FOR
 
     FOR i FROM 0 TO 4 STEP 1  DO 
@@ -43,13 +41,11 @@ BEGIN
                     BREAK;
                 }
         END_FOR
-        if(exists==FALSE) THEN
+        if(exists==TRUE) THEN
         {
             sum=sum+tab[i];
-        }
-        ELSE
             exists=FALSE;
-        END_IF
+        }
     END_FOR
 Write(sum);
 END
