@@ -1,0 +1,57 @@
+ALGORITHM prob1_s2
+VAR
+    htab1 : HASH_TABLE<INTEGER,INTEGER>;
+    htab2 : HASH_TABLE<INTEGER,INTEGER>;
+    sum,i,j: INTEGER;
+    exists:BOOLEAN;
+BEGIN
+    i=0;
+    exists=FALSE;
+//enter tab 1
+
+FOR i FROM 0 TO 4 STEP 1  DO
+    htab1.insert(i,Read());
+END_FOR
+
+//enter tab 2
+
+FOR i FROM 0 TO 4 STEP 1  DO
+    htab2.insert(i,Read());
+END_FOR
+
+FOR i FROM 0 TO 4 STEP 1  DO 
+        FOR j FROM 0 TO 4 STEP 1  DO 
+            if(htab1.get(i)==htab2.get(j)) THEN
+                {
+                    exists=TRUE ;
+                    BREAK;
+                }
+        END_FOR
+        IF(exists==FALSE) THEN
+        {
+            sum=sum+htab1.get(i);
+        }
+        ELSE
+            exists=FALSE;
+        END_IF
+    END_FOR
+
+FOR i FROM 0 TO 4 STEP 1  DO 
+        FOR j FROM 0 TO 4 STEP 1  DO 
+            IF(htab2.get(i)==htab1.get(j) THEN
+                {
+                    exists=TRUE ;
+                    BREAK;
+                }
+            END_IF
+        END_FOR
+        IF(exists==FALSE) THEN
+        {
+            sum=sum+htab2.get(i);
+        }
+        ELSE
+            exists=FALSE;
+        END_IF
+    END_FOR
+Write(sum);
+END
